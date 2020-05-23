@@ -4,27 +4,59 @@ delete from doctor;
 delete from treatment;
 delete from area;
 
-insert into category values (1, 'Fun', NULL);
-insert into category values (2, 'Business', NULL);  
-insert into category values (3, 'School', NULL);
-insert into category values (4, 'Learning', NULL);
+-- Doctor leads area,
 
-insert into customer values (1, 'Joshua', 'josh@gmail.com', addressUdt('Hacienda Catalunia', 123, '12345'));          
-insert into customer values (2, 'Mateo', 'matt@gmail.com', addressUdt('Cedrones', 100, 'AS345'));
-insert into customer values (3, 'Irene', 'ire@gmail.com', addressUdt('Lima', 420, 'LIMA1'));
-insert into customer values (4, 'Juan', 'john@gmail.com', addressUdt('Tess Av.', 5505, '64898'));
-insert into customer values (5, 'Andrea', 'andrea@gmail.com', addressUdt('Robles', 2305, '12009'));
+insert into person values (1, 'Jesus', 'Lozano', '1998-11-02', 'Male');
+insert into person values (2, 'Esteban', 'Torres', '1997-10-15', 'Male');
+insert into person values (3, 'Ernesto', 'Garcia', '1998-12-12', 'Male');
+insert into person values (4, 'Jaime', 'Garza', '1997-10-18', 'Male');
+insert into person values (5, 'Manuel', 'De la O', '1975-11-06', 'Male');
+insert into person values (6, 'Roberto', 'Leal', '1980-15-12', 'Male');
+insert into person values (7, 'Catalina', 'Elizondo', '1955-13-08', 'Female');
+insert into person values (8, 'Roberta', 'Martinez', '1989-03-11', 'Female');
+insert into person values (9, 'Karina', 'Guzman', '1985-05-04', 'Female');
+insert into person values (10, 'Mariana', 'Fernandez', '1990-06-12', 'Female');
+insert into person values (11, 'Javier', 'Martinez', '1970-05-12', 'Male');
+insert into person values (12, 'Luis', 'Alvarez', '1969-04-20', 'Male');
+insert into person values (13, 'Carolina', 'Gutierrez', '1989-12-13', 'Female');
+insert into person values (14, 'Balbina', 'Elizondo', '1978-11-23', 'Female');
+insert into person values (15, 'Lupe', 'Gonzalez', '1976-01-24', 'Female');
 
-insert into buy_order values (1, NULL, (select ref(c) from customer c where c.pid = 2));
-insert into buy_order values (2, NULL, (select ref(c) from customer c where c.pid = 2));
-insert into buy_order values (3, NULL, (select ref(c) from customer c where c.pid = 4));
-insert into buy_order values (4, NULL, (select ref(c) from customer c where c.pid = 5));
-insert into buy_order values (5, NULL, (select ref(c) from customer c where c.pid = 2));
-insert into buy_order values (6, NULL, (select ref(c) from customer c where c.pid = 3));
-insert into buy_order values (7, NULL, (select ref(c) from customer c where c.pid = 3));
-insert into buy_order values (8, NULL, (select ref(c) from customer c where c.pid = 5));
-insert into buy_order values (9, NULL, (select ref(c) from customer c where c.pid = 4));
-insert into buy_order values (10, NULL, (select ref(c) from customer c where c.pid = 2));
+insert into doctor values ('Allergist', '20 years', (select ref(a) from area a where a.name = 'Otorhinolaryngology'), (select ref(p) from person p where p.pid = 5));
+insert into doctor values ('Allergist', '10 years', (select ref(a) from area a where a.name = 'Otorhinolaryngology'),(select ref(p) from person p where p.pid = 13));
+
+insert into doctor values ('Oncologist', '7 years', (select ref(a) from area a where a.name = 'Oncology'), (select ref(p) from person p where p.pid = 6));
+insert into doctor values ('Oncologist', '11 years', (select ref(a) from area a where a.name = 'Oncology'), (select ref(p) from person p where p.pid = 11));
+
+insert into doctor values ('Ortopedist', '5 years', (select ref(a) from area a where a.name = 'Orthopedagogy'), (select ref(p) from person p where p.pid = 9));
+insert into doctor values ('Ortopedist', '8 years', (select ref(a) from area a where a.name = 'Orthopedagogy'), (select ref(p) from person p where p.pid = 12));
+
+insert into doctor values ('Ophthalmologist', '15 years', (select ref(a) from area a where a.pid = 'Ophtalmology'), (select ref(p) from person p where p.pid = 14));
+insert into doctor values ('Ophthalmologist', '12 years', (select ref(a) from area a where a.pid = 'Ophtalmology'), (select ref(p) from person p where p.pid = 15));
+
+insert into area values('Otorhinolaryngology', 'Hospital 5', (select ref(d) from doctor d where d.pid = 5));
+insert into area values('Oncology', 'Hospital 5', (select ref(d) from doctor d where d.pid = 6));
+insert into area values('Orthopedagogy', 'Hospital 5', (select ref(d) from doctor d where d.pid = 9));
+insert into area values('Ophthalmologist', 'Hospital 5', (select ref(d) from doctor d where d.pid = 15));
+
+insert into treatment values('3 months', 'Allegra', 'Take one each day', 5, 1);
+insert into treatment values('6 months', 'Acalabrutinib', '100 mg orally every 12 hours', (select ref(p) from patient p where p.pid = 2), (select ref(d) from doctor.d where d.pid = 6));
+insert into treatment values('1 month', 'Ibuprofen', '200 mg orally every 8 hours', (select ref(p) from patient p where p.pid = 3), (select ref(d) from doctor.d where d.pid = 9));
+
+insert into patient values('Student', (select ref(p) from person p where p.pid = 1));
+insert into patient values('Student', (select ref(p) from person p where p.pid = 2));
+insert into patient values('Student', (select ref(p) from person p where p.pid = 3));
+insert into patient values('Student', (select ref(p) from person p where p.pid = 4));
+
+insert into patient values('Elderly', (select ref(p) from person p where p.pid = 7));
+
+insert into patient values('Worker', (select ref(p) from person p where p.pid = 8));
+insert into patient values('Worker', (select ref(p) from person p where p.pid = 10));
+
+
+
+--insert into buy_order values (1, NULL, (select ref(c) from customer c where c.pid = 2));
+--insert into buy_order values (2, NULL, (select ref(c) from customer c where c.pid = 2));
 
 insert into item values (1, 1000, 'Kindle Fire', 10, categoryUdtArr((select ref(c) from category c where c .pid = 1), 
                                                                     (select ref(c) from category c where c .pid = 4)));
