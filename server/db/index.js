@@ -5,6 +5,4 @@ const client = new Client({
   connectionString: postgresql.url
 });
 
-client.connect();
-
 export default client;
