@@ -6,7 +6,7 @@ const createTables = async () => {
   await client.connect();
 
   const tablesScript = fs
-    .readFileSync(resolve(__dirname, "./create-tables.pgsql"))
+    .readFileSync(resolve(__dirname, "../sql/create-tables.pgsql"))
     .toString();
 
   console.log(tablesScript);
