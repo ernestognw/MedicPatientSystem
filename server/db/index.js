@@ -1,12 +1,10 @@
-import Sequelize from "sequelize";
+import { Client } from "pg";
 import { postgresql } from "../config";
 
-const sequelize = new Sequelize(postgresql.url, {
-  logging: false,
-  maxConcurrentQueries: 100,
-  dialect: "postgres",
-  pool: { maxConnections: 5, maxIdleTime: 30 },
-  language: "en"
+const client = new Client({
+  connectionString: postgresql.url
 });
 
-export default sequelize;
+client.connect();
+
+export default client;

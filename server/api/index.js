@@ -1,16 +1,12 @@
 import { Router } from "express";
+import person from "./routes/person";
+
 const api = Router();
 
 api.get("/", (req, res) => {
   res.status(200).send("API working");
 });
 
-api.get("/person", async (req, res) => {
-  try {
-    res.status(200).send([]);
-  } catch (err) {
-    console.log(err);
-  }
-});
+api.use("/person", person);
 
 export default api;
