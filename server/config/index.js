@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const posgresql = {
+const postgresql = {
   url: process.env.DATABASE_URL
 };
 

@@ -16,9 +16,7 @@
     "eslint-plugin-import": "^2.20.2",
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
-    "pg": "^8.2.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.10"
+    "pg": "^8.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
