@@ -21,8 +21,8 @@ update doctor
 set worksAt = 'Pediatrics'::medical_area
 where pId = 'D7';
 
--- Test rule doctor_areaWorkSpecialty_update
-select r('*** Test rule doctor_areaWorkSpecialty_update');
+-- Test rule doctor_areaWorkspeciality_update
+select r('*** Test rule doctor_areaWorkspeciality_update');
 update doctor
 set worksAt = 'General Medicine'
 where pId = 'D3';

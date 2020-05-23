@@ -3,7 +3,7 @@ create or replace rule area_lead_update as
 on update to area where old.name <> (
 	select worksAt
 	from doctor
-	where pId = old.leadBy
+	where pId = old.ledBy
 )
 do instead select r('El jefe de un area debe trabajar para esa area.');
 
@@ -32,10 +32,10 @@ To select a new leader, the older one is selected
 */
 create or replace rule doctor_changeAreas as
 on update to doctor 
-where old.worksAt <> new.worksAt and new.pId = (select leadBy from area where name = old.worksAt)
+where old.worksAt <> new.worksAt and new.pId = (select ledBy from area where name = old.worksAt)
 do
 	update area 
-	set leadBy = (
+	set ledBy = (
 		select d.pId
 		from doctor d
 		where d.worksAt = old.worksAt and pId <> new.pId  
@@ -45,15 +45,15 @@ do
 	where name = old.worksAt;
 
 -- A doctor may be associated only to hospital areas that are part of his-her pecialties.
-create or replace rule doctor_areaWorkSpecialty_insert as
+create or replace rule doctor_areaWorkspeciality_insert as
 on insert to doctor
-where (new.worksAt not in (select unnest(new.specialties)))
+where (new.worksAt <> new.speciality)
 do instead
 	select r('Los doctores solo deben trabajar en un area que pertenezca a sus especialidades.');
 
-create or replace rule doctor_areaWorkSpecialty_update as
+create or replace rule doctor_areaWorkspeciality_update as
 on update to doctor
-where (new.worksAt not in (select unnest(new.specialties)))
+where (new.worksAt <> new.speciality)
 do instead
 	select r('Los doctores solo deben trabajar en un area que pertenezca a sus especialidades.');
 
@@ -63,8 +63,8 @@ on insert to treatment
 where (
 	select insurancePlan 
 	from patient
-	where pId = new.givenTo
-) = 'Premium'::insurance_plan and 'Radiology'::specialties_t = (
+	where pId = new.receivedBy
+) = 'Premium'::plan_t and 'Radiology'::specialties_t = (
 	select worksAt
 	from doctor
 	where pId = new.prescribedBy
@@ -76,8 +76,8 @@ on update to treatment
 where (
 	select insurancePlan 
 	from patient
-	where pId = new.givenTo
-) = 'Premium'::insurance_plan and 'Radiology'::specialties_t = (
+	where pId = new.receivedBy
+) = 'Premium'::plan_t and 'Radiology'::specialties_t = (
 	select worksAt
 	from doctor
 	where pId = new.prescribedBy
@@ -90,8 +90,8 @@ on insert to treatment
 where (
 	select insurancePlan 
 	from patient
-	where pId = new.givenTo
-) = 'Basic'::insurance_plan and (
+	where pId = new.receivedBy
+) = 'Basic'::plan_t and (
 	select worksAt
 	from doctor
 	where pId = new.prescribedBy
@@ -103,8 +103,8 @@ on update to treatment
 where (
 	select insurancePlan 
 	from patient
-	where pId = new.givenTo
-) = 'Basic'::insurance_plan and (
+	where pId = new.receivedBy
+) = 'Basic'::plan_t and (
 	select worksAt
 	from doctor
 	where pId = new.prescribedBy
