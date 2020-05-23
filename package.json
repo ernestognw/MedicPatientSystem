@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node ./index.js"
+    "dev": "nodemon --exec babel-node ./index.js",
+    "create-tables": "babel-node ./server/db/scripts/create-tables.js"
   },
   "keywords": [],
   "author": "",
