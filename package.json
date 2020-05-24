@@ -8,7 +8,8 @@
     "db:create-tables": "babel-node ./server/db/scripts/create-tables.js",
     "db:create-rules": "babel-node ./server/db/scripts/create-rules.js",
     "db:test-rules": "babel-node ./server/db/scripts/test-rules.js",
-    "db:setup": "yarn db:create-tables && yarn db:create-rules && yarn db:test-rules"
+    "db:setup": "yarn db:create-tables && yarn db:create-rules && yarn db:test-rules",
+    "start": "babel-node ./index.js"
   },
   "keywords": [],
   "author": "",
