@@ -1,58 +1,37 @@
-insert into patient
-values('P1', 'Juan', 'Perez', '1997-05-09', 'M', 'Basic');
-insert into patient
-values('P2', 'Maria', 'Rodriguez', '1985-03-12', 'F', 'Premium');
-insert into patient
-values('P3', 'Pedro', 'Gonzalez', '1954-02-01', 'M', 'Unlimited');
+insert into patient values (1, 'Esteban', 'Torres', '1997-10-15', 'Male', 'Basic'::plan_t);
+insert into patient values (2, 'Jesus', 'Lozano', '1998-11-02', 'Male', 'Premium'::plan_t);
+insert into patient values (3, 'Ernesto', 'Garcia', '1998-12-12', 'Male', 'Unlimited'::plan_t);
+insert into patient values (4, 'Jaime', 'Garza', '1997-10-18', 'Male', 'Basic'::plan_t);
 
-insert into area
-values('General Medicine', 'first floor');
-insert into area
-values('Traumatology', 'second floor');
-insert into area
-values('Allergology', 'second floor');
-insert into area
-values('Radiology', 'third floor');
-insert into area
-values('Cardiology', 'third floor floor');
-insert into area
-values('Gerontology', 'fourth floor');
-insert into area
-values('Obstetrics', 'fifth floor');
-insert into area
-values('Pediatrics', 'fifth floor');
+insert into area values ('General Medicine'::specialties_t, 'Building A Floor 4');
+insert into area values ('Traumatology'::specialties_t, 'Building B Floor 1');
+insert into area values ('Allergology'::specialties_t, 'Building A Floor 2');
+insert into area values ('Radiology'::specialties_t, 'Building C');
+insert into area values ('Cardiology'::specialties_t, 'Building A Floor 3');
+insert into area values ('Gerontology'::specialties_t, 'Building B Floor 2');
+insert into area values ('Obstetrics'::specialties_t, 'Building A Floor 1');
+insert into area values ('Pediatrics'::specialties_t, 'Building B Floor 3');
 
-insert into doctor
-values('D1', 'Alfonso', 'Garcia', '1990-07-04', 'M', array['Pediatrics'::specialties_t], 10000, 5, 'Pediatrics'::specialties_t);
-insert into doctor
-values('D2', 'Patricia', 'Zamarripa', '1987-03-05', 'F', array['General Medicine'::specialties_t, 'Pediatrics'::specialties_t],1000, 10, 'General Medicine'::specialties_t);
-insert into doctor
-values('D3', 'Ruperto', 'Martinez', '1965-07-03', 'M', array['Allergology'::specialties_t, 'Pediatrics'::specialties_t],1000, 8, 'Allergology'::specialties_t);
-insert into doctor
-values('D4', 'Martha', 'Garcia', '1990-07-04', 'F', array['Obstetrics'::specialties_t],1000, 5, 'Obstetrics'::specialties_t);
-insert into doctor
-values('D5', 'Marcela', 'Zamarripa', '1987-03-05', 'F', array['Gerontology'::specialties_t],1000, 10, 'Gerontology'::specialties_t);
-insert into doctor
-values('D6', 'Daniel', 'Martinez', '1965-07-03', 'M', array['Cardiology'::specialties_t],1000, 8, 'Cardiology'::specialties_t);
-insert into doctor
-values('D7', 'Joaquin', 'Garcia', '1990-07-04', 'M', array['Radiology'::specialties_t],1000, 5, 'Radiology'::specialties_t);
-insert into doctor
-values('D8', 'Arnulfo', 'Zamarripa', '1987-03-05', 'M', array['Traumatology'::specialties_t],1000, 10, 'Traumatology'::specialties_t);
-insert into doctor
-values('D9', 'Aaron', 'Garcia', '1997-12-12', 'M', array['Allergology'::specialties_t], 2000, 3, 'Allergology'::specialties_t);
+insert into doctor values(5, 'Manuel', 'De la O', '1975-11-06', 'Male'::gender_t,'Pediatrics'::specialties_t, 10000, 5);
+insert into doctor values(6, 'Roberto', 'Leal', '1980-15-12', 'Male'::gender_t, 'General Medicine'::specialties_t,15000, 10);
+insert into doctor values(7, 'Catalina', 'Elizondo', '1955-13-08', 'Female'::gender_t, 'Allergology'::specialties_t,10000, 8);
+insert into doctor values(8, 'Roberta', 'Martinez', '1989-03-11', 'Female'::gender_t, 'Obstetrics'::specialties_t,10000, 5);
+insert into doctor values(9, 'Karina', 'Guzman', '1985-05-04', 'Female'::gender_t, 'Gerontology'::specialties_t,10000, 10);
+insert into doctor values(10, 'Mariana', 'Fernandez', '1990-06-12', 'Female'::gender_t, 'Cardiology'::specialties_t,10000, 8);
+insert into doctor values(11, 'Javier', 'Martinez', '1970-05-12', 'Male'::gender_t, 'Radiology'::specialties_t,10000, 5);
+insert into doctor values(12, 'Luis', 'Alvarez', '1969-04-20', 'Male'::gender_t, 'Traumatology'::specialties_t,10000, 10);
+insert into doctor values(13, 'Carolina', 'Gutierrez', '1989-12-13', 'Female'::gender_t, 'Allergology'::specialties_t, 20000, 3);
+insert into doctor values(14, 'Robertina', 'Ilegal', '1981-15-12', 'Male'::gender_t, 'General Medicine'::specialties_t,15000, 10);
 
+update area set ledBy = 6 where name = 'General Medicine';
+update area set ledBy = 12 where name = 'Traumatology';
+update area set ledBy = 7 where name = 'Allergology';
+update area set ledBy = 11 where name = 'Radiology';
+update area set ledBy = 10 where name = 'Cardiology';
+update area set ledBy = 9 where name = 'Gerontology';
+update area set ledBy = 8 where name = 'Obstetrics';
+update area set ledBy = 5 where name = 'Pediatrics';
 
-update area set leadBy = 'D2' where name = 'General Medicine';
-update area set leadBy = 'D8' where name = 'Traumatology';
-update area set leadBy = 'D3' where name = 'Allergology';
-update area set leadBy = 'D7' where name = 'Radiology';
-update area set leadBy = 'D6' where name = 'Cardiology';
-update area set leadBy = 'D5' where name = 'Gerontology';
-update area set leadBy = 'D4' where name = 'Obstetrics';
-update area set leadBy = 'D1' where name = 'Pediatrics';
+insert into treatment values('2020-07-23', array['Allegra'], 'Take one each day', 1, 7);
+insert into treatment values('2020-09-14', array['Acalabrutinib', 'Ibuprofen'], '100 mg orally every 12 hours & 200 mg orally every 8 hours', 2, 7);
 
-insert into treatment (prescribedBy, givenTo, duration, medicines)
-values('D2', 'P3', 5, array['aspirine', 'ibuprofen']);
-
-insert into treatment (prescribedBy, givenTo, duration, medicines)
-values('D4', 'P2', 5, array['cataflam', 'antifludes']);

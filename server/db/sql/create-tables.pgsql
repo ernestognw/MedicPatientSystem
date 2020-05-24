@@ -26,6 +26,7 @@ CREATE TABLE Person (
 CREATE TABLE Doctor (
   pId int PRIMARY KEY REFERENCES Person(pId),
   speciality specialties_t,
+  salary int,
   yearsExperience int
 ) INHERITS (Person);
 

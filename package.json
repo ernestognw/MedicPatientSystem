@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node ./index.js",
-    "create-tables": "babel-node ./server/db/scripts/create-tables.js",
-    "create-rules": "babel-node ./server/db/scripts/create-rules.js",
-    "test-rules": "babel-node ./server/db/scripts/test-rules.js",
-    "db:prepare": "yarn create-tables && yarn create-rules && yarn test-rules"
+    "db:create-tables": "babel-node ./server/db/scripts/create-tables.js",
+    "db:create-rules": "babel-node ./server/db/scripts/create-rules.js",
+    "db:test-rules": "babel-node ./server/db/scripts/test-rules.js",
+    "db:setup": "yarn db:create-tables && yarn db:create-rules && yarn db:test-rules"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
     "nodemon": "^2.0.4",
     "pg": "^8.2.1"
   },
