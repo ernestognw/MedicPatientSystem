@@ -1,1 +1,30 @@
-<h1>Doctors</h1>
+<div class="container mt-2">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">DOB</th>
+        <th scope="col">gender</th>
+        <th scope="col">speciality</th>
+        <th scope="col">salary</th>
+        <th scope="col">Years of Experience</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each doctors}}
+      <tr>
+        <td>{{pid}}</th>
+        <td>{{firstname}}</td>
+        <td>{{lastname}}</td>
+        <td>{{dob}}</td>
+        <td>{{gender}}</td>
+        <td>{{speciality}}</td>
+        <td>{{salary}}</td>
+        <td>{{yearsexperience}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

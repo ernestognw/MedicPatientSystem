@@ -10,7 +10,8 @@ const createTables = async () => {
     .readFileSync(resolve(__dirname, "../sql/test-rules.pgsql"))
     .toString();
 
-  await client.query(tablesScript);
+  const res = await client.query(tablesScript);
+  res.forEach(result => console.log(result.rows));
 
   console.log("RULES TESTED");
 

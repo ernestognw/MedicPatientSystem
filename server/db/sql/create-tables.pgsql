@@ -24,14 +24,14 @@ CREATE TABLE Person (
 );
 
 CREATE TABLE Doctor (
-  pId int PRIMARY KEY REFERENCES Person(pId),
+  pId int PRIMARY KEY,
   speciality specialties_t,
   salary int,
   yearsExperience int
 ) INHERITS (Person);
 
 CREATE TABLE Patient (
-  pId int PRIMARY KEY REFERENCES Person(pId),
+  pId int PRIMARY KEY,
   insurancePlan plan_t
 ) INHERITS (Person);
 
@@ -46,9 +46,9 @@ alter table Doctor
 add column worksAt specialties_t REFERENCES Area(name);
 
 CREATE TABLE Treatment (
-  duration time,
+  duration date,
   medicaments text[],
-  description varchar(50),
+  description varchar(100),
   receivedBy int REFERENCES Patient(pId),
   prescribedBy int REFERENCES Doctor(pId)
 );

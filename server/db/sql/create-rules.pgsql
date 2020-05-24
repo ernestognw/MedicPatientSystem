@@ -7,12 +7,11 @@ on update to area where old.name <> (
 )
 do instead select r('El jefe de un area debe trabajar para esa area.');
 
-
 -- Every time a doctor accumulates two years of experience he/she receive a salary increment of 10% 
-create or replace function raiseDoctorSalary() returns trigger as $$
+create or replace function upgradeDoctorSalary() returns trigger as $$
 begin
 	if NEW.yearsExperience % 2 = 0 then
-		NEW.monthlySalary = NEW.monthlySalary * 1.1;
+		NEW.salary = NEW.salary * 1.1;
 	end if;
     return NEW;
 end;
@@ -21,7 +20,7 @@ $$ language plpgsql;
 create trigger doctor_salary
 before update of yearsExperience on doctor
 for each row
-execute procedure raiseDoctorSalary();
+execute procedure upgradeDoctorSalary();
 
 
 /* It is possible that a doctor changes his/her Area with in the hospital. 

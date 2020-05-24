@@ -10,7 +10,7 @@ const createTables = async () => {
     .readFileSync(resolve(__dirname, "../sql/create-tables.pgsql"))
     .toString();
 
-  await client.query(tablesScript);
+  const res = await client.query(tablesScript);
 
   console.log("TABLES ADDED");
 

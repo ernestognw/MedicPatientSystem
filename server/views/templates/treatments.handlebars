@@ -1,1 +1,26 @@
-<h1>Treatments</h1>
+<div class="container mt-2">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Duration</th>
+        <th scope="col">Medicaments</th>
+        <th scope="col">Description</th>
+        <th scope="col">Received by ID</th>
+        <th scope="col">Prescribed by ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each treatments}}
+      <tr>
+        <td>{{duration}}</td>
+        <td>
+          {{medicaments}}
+        </td>
+        <td>{{description}}</td>
+        <td>{{receivedby}}</td>
+        <td>{{prescribedby}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

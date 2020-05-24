@@ -1,1 +1,26 @@
-<h1>Patients</h1>
+<div class="container mt-2">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">DOB</th>
+        <th scope="col">gender</th>
+        <th scope="col">insurance plan</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each patients}}
+      <tr>
+        <td>{{pid}}</th>
+        <td>{{firstname}}</td>
+        <td>{{lastname}}</td>
+        <td>{{dob}}</td>
+        <td>{{gender}}</td>
+        <td>{{insuranceplan}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
