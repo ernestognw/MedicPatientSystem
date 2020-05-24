@@ -33,6 +33,6 @@ update area set ledBy = 8 where name = 'Obstetrics';
 update area set ledBy = 5 where name = 'Pediatrics';
 
 insert into treatment values('2020-07-23', array['Allegra'], 'Take one each day', 1, 7);
-insert into treatment values('2020-09-14', array['Acalabrutinib', 'Ibuprofen'], '100 mg orally every 12 hours & 200 mg orally every 8 hours', 2, 12);
-insert into treatment values('2020-05-27', array['Peptobismol', 'Antifludes'], '50 ml orally every 12 hours & 50 ml orally every 8 hours', 2, 12);
-insert into treatment values('2020-08-03', array['Dulcolax', 'Claritin'], '50 ml orally every 12 hours & 50 ml orally every 8 hours', 2, 12);
+insert into treatment values('2020-09-14', array['Zantac', 'Midol'], '100 mg orally every 12 hours & 200 mg orally every 8 hours', 2, 11);
+insert into treatment values('2020-05-27', array['Peptobismol', 'Antifludes'], '50 ml orally every 12 hours & 50 ml orally every 8 hours', 3, 6);
+insert into treatment values('2020-08-03', array['Dulcolax', 'Claritin'], '50 mg orally every 12 hours & 50 mg orally every 8 hours', 4, 12);
