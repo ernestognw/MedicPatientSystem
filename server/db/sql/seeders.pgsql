@@ -22,6 +22,9 @@ insert into doctor values(11, 'Javier', 'Martinez', '1970-05-12', 'Male'::gender
 insert into doctor values(12, 'Luis', 'Alvarez', '1969-04-20', 'Male'::gender_t, 'Traumatology'::specialties_t,10000, 10);
 insert into doctor values(13, 'Carolina', 'Gutierrez', '1989-12-13', 'Female'::gender_t, 'Allergology'::specialties_t, 20000, 3);
 insert into doctor values(14, 'Robertina', 'Ilegal', '1981-15-12', 'Male'::gender_t, 'General Medicine'::specialties_t,15000, 10);
+insert into doctor values(15, 'Robert', 'Hills', '1985-12-11', 'Male'::gender_t, 'Pediatrics'::specialties_t,170000, 3);
+insert into doctor values(16, 'William', 'Ham', '1979-06-21', 'Male'::gender_t, 'Pediatrics'::specialties_t,17800, 6);
+insert into doctor values(17, 'Henry', 'Hampton', '1969-11-01', 'Male'::gender_t, 'Obstetrics'::specialties_t,17800, 6);
 
 update area set ledBy = 6 where name = 'General Medicine';
 update area set ledBy = 12 where name = 'Traumatology';
