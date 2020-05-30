@@ -63,4 +63,4 @@ raise notice '=== Testing rule insurance_limitBasic_insert ===';
 end;
 $$;
 insert into treatment (prescribedBy, receivedBy, duration)
-values(5, 1, '1990-11-02');
+values(13, 1, '1990-11-02');

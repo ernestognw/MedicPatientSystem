@@ -11,9 +11,6 @@ const createTables = async () => {
     .toString();
 
   const res = await client.query(tablesScript);
-  res.forEach(result => console.log(result.rows));
-
-  console.log("RULES TESTED");
 
   client.end();
 };
